@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -8,70 +9,80 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+    justify-content: flex-start;
+    min-height: 100vh;
     margin: 0;
+    padding: 20px 10px;
+    background: #f8f9fa;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .container {
     display: flex;
-    width: 90vw;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .panel {
-    background-size: auto 100%;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh;
-    border-radius: 50px;
+    height: 60vh;
+    flex: 1 1 calc(50% - 40px);
+    min-width: 280px;
+    border-radius: 20px;
     cursor: pointer;
-    flex: 0.5;
-    margin: 10px;
     position: relative;
-    transition: flex 0.7s ease-in;
-}
-
-.panel h3 {
-    font-size: 24px;
-    position: absolute;
-    color: Yellow;
-    bottom: 70px;
-    left: 20px;
-    margin: 0;
-    opacity: 0;
-}
-
-.panel p {
-    color: Yellow;
-    font-size: 24px;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    margin: 0;
-    opacity: 0;
-}
-
-.panel.active {
-    flex: 4;
+    transition: all 0.5s ease;
+    overflow: hidden;
 }
 
 .panel:hover {
-    flex: 4;
+    transform: scale(1.03);
 }
 
-.panel:hover h3,
-.panel:hover p {
-    opacity: 1;
-    transition: opacity 0.3s ease-in 0.4s;
+.text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+    color: white;
+    border-radius: 0 0 20px 20px;
+    transition: opacity 0.3s ease;
 }
 
-@media (max-width: 1000px) {
-    .container {
-        width: 100vw;
+.text-overlay h3,
+.text-overlay p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.text-overlay h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+/* Responsive for phones */
+@media (max-width: 768px) {
+    .panel {
+        flex: 1 1 100%;
+        height: 40vh;
     }
-    .panel:nth-of-type(4),
-    .panel:nth-of-type(5) {
-        display: none;
+
+    .text-overlay h3 {
+        font-size: 1rem;
+    }
+
+    .text-overlay p {
+        font-size: 0.9rem;
     }
 }
